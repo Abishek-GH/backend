@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: schedx_base
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - '8000:8000'
+    env_file:
+      - .env
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - mongo
+      - postgres
+      - redis
+
+  mongo:
+    image: mongo:6
+    logging:
+      driver: 'none'
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: P!sc3s@Mongodb_$4095
+
+  postgres:
+    image: postgres:15
+    logging:
+      driver: 'none'
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: P!sc3s@Postgresql_$4095
+      POSTGRES_DB: postgres
+
+  redis:
+    image: redis:7
+    logging:
+      driver: 'none'
+    ports:
+      - '6379:6379'
