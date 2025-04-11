@@ -11,7 +11,7 @@ CMD ["npm", "run", "dev"]
 FROM node:18 AS build
 WORKDIR /app
 COPY package*.json ./
-RUN npm install --production
+RUN npm install
 COPY . .
 RUN npm run build
 
@@ -19,6 +19,6 @@ RUN npm run build
 FROM node:18-slim
 WORKDIR /app
 COPY --from=build /app ./
-RUN npm install --production
+RUN npm install
 EXPOSE 8000
 CMD ["node", "dist/server.js"]

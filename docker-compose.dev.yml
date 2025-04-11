@@ -20,8 +20,6 @@ services:
 
   mongo:
     image: mongo:6
-    logging:
-      driver: 'none'
     ports:
       - '27017:27017'
     environment:
@@ -30,8 +28,6 @@ services:
 
   postgres:
     image: postgres:15
-    logging:
-      driver: 'none'
     ports:
       - '5432:5432'
     environment:
@@ -41,7 +37,5 @@ services:
 
   redis:
     image: redis:7
-    logging:
-      driver: 'none'
     ports:
       - '6379:6379'
