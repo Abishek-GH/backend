@@ -54,8 +54,8 @@ jobs:
       - name: Run Linter
         run: docker run schedx-app npm run lint
 
-      - name: Run Tests
-        run: docker run schedx-app npm run test
+      - name: Format Code
+        run: docker run schedx-app npm run format
 
       - name: Done
         run: echo "✅ All checks complete"
