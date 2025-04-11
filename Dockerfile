@@ -1,24 +1,24 @@
-# Use Node image
-FROM node:18
-
-# Set working directory
+# Development Stage
+FROM node:18 AS dev
 WORKDIR /app
-
-# Copy package files
 COPY package*.json ./
-
-# Install dependencies
 RUN npm install
-
-# Copy rest of the code
 COPY . .
-
-# Build the app
-RUN npm run build
-
-# Expose the port
 EXPOSE 8000
-
-# Run the server
 CMD ["npm", "run", "dev"]
 
+# Production Stage
+FROM node:18 AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --production
+COPY . .
+RUN npm run build
+
+# Final Runtime Stage
+FROM node:18-slim
+WORKDIR /app
+COPY --from=build /app ./
+RUN npm install --production
+EXPOSE 8000
+CMD ["node", "dist/server.js"]
