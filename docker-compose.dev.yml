@@ -32,7 +32,7 @@ services:
       - '5432:5432'
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: P!sc3s@Postgresql_$4095
+      POSTGRES_PASSWORD: P!sc3s@Postgresql_$$4095
       POSTGRES_DB: postgres
 
   redis:
