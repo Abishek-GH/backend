@@ -24,7 +24,7 @@ services:
       - '27017:27017'
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: P!sc3s@Mongodb_$4095
+      MONGO_INITDB_ROOT_PASSWORD: P!sc3s@Mongodb_$$4095
 
   postgres:
     image: postgres:15
