@@ -6,8 +6,6 @@ import { connectRedis } from './config/redis';
 
 dotenv.config();
 
-const port = process.env.PORT || 8000;
-
 const startServer = async function () {
   try {
     await connectMongo();
@@ -19,8 +17,8 @@ const startServer = async function () {
   }
 };
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(8000, '0.0.0.0', () => {
+  console.log(`Server running at http://localhost:8000`);
 });
 
 startServer();
